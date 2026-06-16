@@ -581,13 +581,23 @@ const PAIN_OPTIONS = [
   "가족 모임 일정 조율",
 ];
 
+type AgeGroup = "20s" | "30s" | "40s" | "50s" | "60+";
+type ParentAgeGroup = "50s" | "60s" | "70s" | "80+";
+
 function BetaForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
-    livesApart: "",
-    pain: "",
+    phone: "",
+    age_group: "" as AgeGroup | "",
+    lives_separately_from_parents: null as boolean | null,
+    parent_age_group: "" as ParentAgeGroup | "",
+    family_member_count: "" as string,
+    main_pain_point: "",
+    interview_willing: false,
   });
 
   function update<K extends keyof typeof form>(k: K, v: (typeof form)[K]) {
@@ -596,9 +606,30 @@ function BetaForm() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // TODO: 실제 저장 연동 (Supabase / Airtable 등)
-    // await submitBetaApplication(form);
-    setSubmitted(true);
+    setErrorMsg(null);
+    if (!form.age_group) return setErrorMsg("연령대를 선택해주세요.");
+    if (form.lives_separately_from_parents === null)
+      return setErrorMsg("부모님과 별도 거주 여부를 선택해주세요.");
+
+    setSubmitting(true);
+    const { submitBetaSignup } = await import("@/lib/betaSignup");
+    const res = await submitBetaSignup({
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      age_group: form.age_group,
+      lives_separately_from_parents: form.lives_separately_from_parents,
+      parent_age_group: form.parent_age_group || null,
+      family_member_count: form.family_member_count
+        ? Number(form.family_member_count)
+        : null,
+      main_pain_point: form.main_pain_point || null,
+      interview_willing: form.interview_willing,
+      source: "landing",
+    });
+    setSubmitting(false);
+    if (res.ok) setSubmitted(true);
+    else setErrorMsg(res.error);
   }
 
   return (
@@ -631,78 +662,86 @@ function BetaForm() {
 
           {submitted ? (
             <div className="flex flex-col items-center justify-center rounded-2xl border border-primary/30 bg-primary-soft/40 p-10 text-center">
-              <div className="grid h-14 w-14 place-items-center rounded-full bg-primary text-2xl text-primary-foreground">
-                ✓
-              </div>
-              <h3 className="mt-4 font-display text-2xl font-bold">신청이 접수되었어요</h3>
+              <div className="grid h-14 w-14 place-items-center rounded-full bg-primary text-2xl text-primary-foreground">✓</div>
+              <h3 className="mt-4 font-display text-2xl font-bold">신청이 완료되었습니다</h3>
               <p className="mt-2 text-muted-foreground">
-                준비가 되면 입력하신 이메일로 베타 초대장을 보내드릴게요.
+                패밀릿의 초기 사용자 모집에 참여해주셔서 감사합니다.
+                <br />
+                추후 인터뷰 또는 베타 테스트 안내를 드릴 예정입니다.
               </p>
             </div>
           ) : (
             <form onSubmit={onSubmit} className="rounded-2xl bg-surface-elevated p-6 sm:p-7">
               <div className="space-y-4">
-                <Field label="이름">
-                  <input
-                    required
-                    value={form.name}
-                    onChange={(e) => update("name", e.target.value)}
-                    placeholder="홍길동"
-                    className={inputCls}
-                  />
+                <Field label="이름 *">
+                  <input required value={form.name} onChange={(e) => update("name", e.target.value)} placeholder="홍길동" className={inputCls} />
                 </Field>
-                <Field label="이메일">
-                  <input
-                    required
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => update("email", e.target.value)}
-                    placeholder="you@email.com"
-                    className={inputCls}
-                  />
+                <Field label="이메일 *">
+                  <input required type="email" value={form.email} onChange={(e) => update("email", e.target.value)} placeholder="you@email.com" className={inputCls} />
                 </Field>
-                <Field label="부모님과 별도 거주하시나요?">
+                <Field label="연락처 *">
+                  <input required type="tel" value={form.phone} onChange={(e) => update("phone", e.target.value)} placeholder="010-0000-0000" className={inputCls} />
+                </Field>
+                <Field label="연령대 *">
+                  <div className="flex flex-wrap gap-2">
+                    {(["20s","30s","40s","50s","60+"] as AgeGroup[]).map((a) => (
+                      <Chip key={a} active={form.age_group === a} onClick={() => update("age_group", a)}>
+                        {a === "60+" ? "60대+" : a.replace("s", "대")}
+                      </Chip>
+                    ))}
+                  </div>
+                </Field>
+                <Field label="부모님과 별도 거주하시나요? *">
                   <div className="grid grid-cols-2 gap-2">
-                    {["네, 떨어져 살아요", "아니요, 함께 살아요"].map((opt) => (
-                      <button
-                        type="button"
-                        key={opt}
-                        onClick={() => update("livesApart", opt)}
+                    {[
+                      { label: "네, 떨어져 살아요", value: true },
+                      { label: "아니요, 함께 살아요", value: false },
+                    ].map((opt) => (
+                      <button type="button" key={opt.label}
+                        onClick={() => update("lives_separately_from_parents", opt.value)}
                         className={`rounded-xl border px-3 py-3 text-[14px] font-medium transition ${
-                          form.livesApart === opt
+                          form.lives_separately_from_parents === opt.value
                             ? "border-primary bg-primary-soft text-foreground"
                             : "border-border bg-background text-muted-foreground hover:border-primary/40"
-                        }`}
-                      >
-                        {opt}
+                        }`}>
+                        {opt.label}
                       </button>
                     ))}
                   </div>
                 </Field>
-                <Field label="가장 챙기기 어려운 항목">
+                <Field label="부모님 연령대 (선택)">
+                  <div className="flex flex-wrap gap-2">
+                    {(["50s","60s","70s","80+"] as ParentAgeGroup[]).map((a) => (
+                      <Chip key={a} active={form.parent_age_group === a} onClick={() => update("parent_age_group", a)}>
+                        {a === "80+" ? "80대+" : a.replace("s", "대")}
+                      </Chip>
+                    ))}
+                  </div>
+                </Field>
+                <Field label="가족 구성원 수 (선택)">
+                  <input type="number" min={1} max={20} value={form.family_member_count}
+                    onChange={(e) => update("family_member_count", e.target.value)} placeholder="예: 4" className={inputCls} />
+                </Field>
+                <Field label="가장 챙기기 어려운 항목 (선택)">
                   <div className="flex flex-wrap gap-2">
                     {PAIN_OPTIONS.map((p) => (
-                      <button
-                        type="button"
-                        key={p}
-                        onClick={() => update("pain", p)}
-                        className={`rounded-full border px-3.5 py-2 text-[13px] font-medium transition ${
-                          form.pain === p
-                            ? "border-primary bg-primary text-primary-foreground"
-                            : "border-border bg-background text-muted-foreground hover:border-primary/40"
-                        }`}
-                      >
-                        {p}
-                      </button>
+                      <Chip key={p} active={form.main_pain_point === p} onClick={() => update("main_pain_point", p)}>{p}</Chip>
                     ))}
                   </div>
                 </Field>
+                <label className="flex items-start gap-3 rounded-xl border border-border bg-background p-3 text-[14px]">
+                  <input type="checkbox" className="mt-0.5 h-4 w-4 accent-[var(--primary)]"
+                    checked={form.interview_willing}
+                    onChange={(e) => update("interview_willing", e.target.checked)} />
+                  <span className="text-muted-foreground">사용자 인터뷰(30분 내외)에 참여할 의향이 있어요.</span>
+                </label>
               </div>
-              <button
-                type="submit"
-                className="mt-6 w-full rounded-2xl bg-primary py-4 text-[16px] font-semibold text-primary-foreground shadow-[var(--shadow-cta)] transition hover:opacity-95"
-              >
-                베타 신청하기 →
+              {errorMsg && (
+                <p className="mt-4 rounded-lg bg-destructive/10 px-3 py-2 text-[13px] text-destructive">{errorMsg}</p>
+              )}
+              <button type="submit" disabled={submitting}
+                className="mt-6 w-full rounded-2xl bg-primary py-4 text-[16px] font-semibold text-primary-foreground shadow-[var(--shadow-cta)] transition hover:opacity-95 disabled:opacity-60">
+                {submitting ? "신청 중..." : "베타 신청하기 →"}
               </button>
               <p className="mt-3 text-center text-[12px] text-muted-foreground">
                 입력 정보는 베타 초대 안내 목적 외에는 사용하지 않습니다.
@@ -712,6 +751,19 @@ function BetaForm() {
         </div>
       </div>
     </Section>
+  );
+}
+
+function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <button type="button" onClick={onClick}
+      className={`rounded-full border px-3.5 py-2 text-[13px] font-medium transition ${
+        active
+          ? "border-primary bg-primary text-primary-foreground"
+          : "border-border bg-background text-muted-foreground hover:border-primary/40"
+      }`}>
+      {children}
+    </button>
   );
 }
 
