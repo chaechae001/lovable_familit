@@ -5,16 +5,9 @@ export const betaSignupSchema = z.object({
   name: z.string().trim().min(1, "이름을 입력해주세요").max(60),
   email: z.string().trim().email("올바른 이메일을 입력해주세요").max(255),
   phone: z.string().trim().min(1, "연락처를 입력해주세요").max(40),
-  age_group: z.enum(["20s", "30s", "40s", "50s", "60+"], {
-    message: "연령대를 선택해주세요",
-  }),
-  lives_separately_from_parents: z.boolean({
-    message: "부모님과 별도 거주 여부를 선택해주세요",
-  }),
-  parent_age_group: z
-    .enum(["50s", "60s", "70s", "80+"])
-    .optional()
-    .nullable(),
+  age_group: z.enum(["20s", "30s", "40s", "50s", "60+"]),
+  lives_separately_from_parents: z.boolean(),
+  parent_age_group: z.enum(["50s", "60s", "70s", "80+"]).optional().nullable(),
   family_member_count: z.number().int().min(1).max(20).optional().nullable(),
   main_pain_point: z.string().trim().max(120).optional().nullable(),
   interview_willing: z.boolean().optional().default(false),
