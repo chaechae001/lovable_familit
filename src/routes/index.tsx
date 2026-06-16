@@ -1,29 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
+import FamilitLanding from "@/components/FamilitLanding";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Familit — 가족을 챙기는 마음이 실행으로" },
+      {
+        name: "description",
+        content:
+          "부모님과 떨어져 사는 30·40대 자녀를 위한 가족 케어 운영 앱. 생신, 명절, 건강검진, 가족 모임을 액션 카드로 정리하고 함께 확인·완료하세요. 베타 신청 받는 중.",
+      },
+      { property: "og:title", content: "Familit — 가족 케어 운영 앱" },
+      {
+        property: "og:description",
+        content: "놓치기 쉬운 가족 일을 가족 액션 카드로. 베타 참여자 모집 중.",
+      },
     ],
   }),
-  component: Index,
+  component: FamilitLanding,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
