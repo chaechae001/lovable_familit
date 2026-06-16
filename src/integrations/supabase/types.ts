@@ -14,13 +14,334 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      action_cards: {
+        Row: {
+          category: string
+          created_at: string
+          created_by: string | null
+          description: string | null
+          due_date: string | null
+          group_id: string
+          id: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          due_date?: string | null
+          group_id: string
+          id?: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          due_date?: string | null
+          group_id?: string
+          id?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "action_cards_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "family_groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      beta_signups: {
+        Row: {
+          age_group: string | null
+          created_at: string
+          email: string
+          family_member_count: number | null
+          id: string
+          interview_willing: boolean | null
+          lives_separately_from_parents: boolean | null
+          main_pain_point: string | null
+          name: string
+          parent_age_group: string | null
+          phone: string | null
+          source: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          age_group?: string | null
+          created_at?: string
+          email: string
+          family_member_count?: number | null
+          id?: string
+          interview_willing?: boolean | null
+          lives_separately_from_parents?: boolean | null
+          main_pain_point?: string | null
+          name: string
+          parent_age_group?: string | null
+          phone?: string | null
+          source?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          age_group?: string | null
+          created_at?: string
+          email?: string
+          family_member_count?: number | null
+          id?: string
+          interview_willing?: boolean | null
+          lives_separately_from_parents?: boolean | null
+          main_pain_point?: string | null
+          name?: string
+          parent_age_group?: string | null
+          phone?: string | null
+          source?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
+      card_comments: {
+        Row: {
+          author_id: string | null
+          author_name: string
+          body: string
+          card_id: string
+          created_at: string
+          id: string
+        }
+        Insert: {
+          author_id?: string | null
+          author_name: string
+          body: string
+          card_id: string
+          created_at?: string
+          id?: string
+        }
+        Update: {
+          author_id?: string | null
+          author_name?: string
+          body?: string
+          card_id?: string
+          created_at?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "card_comments_card_id_fkey"
+            columns: ["card_id"]
+            isOneToOne: false
+            referencedRelation: "action_cards"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      checklist_items: {
+        Row: {
+          ai_suggested: boolean
+          card_id: string
+          created_at: string
+          done_at: string | null
+          done_by: string | null
+          id: string
+          is_done: boolean
+          label: string
+          position: number
+        }
+        Insert: {
+          ai_suggested?: boolean
+          card_id: string
+          created_at?: string
+          done_at?: string | null
+          done_by?: string | null
+          id?: string
+          is_done?: boolean
+          label: string
+          position?: number
+        }
+        Update: {
+          ai_suggested?: boolean
+          card_id?: string
+          created_at?: string
+          done_at?: string | null
+          done_by?: string | null
+          id?: string
+          is_done?: boolean
+          label?: string
+          position?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "checklist_items_card_id_fkey"
+            columns: ["card_id"]
+            isOneToOne: false
+            referencedRelation: "action_cards"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      family_groups: {
+        Row: {
+          created_at: string
+          created_by: string
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      family_members: {
+        Row: {
+          created_at: string
+          display_name: string
+          group_id: string
+          id: string
+          is_admin: boolean
+          parent_mode: boolean
+          role: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          display_name: string
+          group_id: string
+          id?: string
+          is_admin?: boolean
+          parent_mode?: boolean
+          role?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          display_name?: string
+          group_id?: string
+          id?: string
+          is_admin?: boolean
+          parent_mode?: boolean
+          role?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "family_members_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "family_groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      family_responses: {
+        Row: {
+          card_id: string
+          created_at: string
+          id: string
+          member_id: string
+          response_type: string
+          response_value: string | null
+        }
+        Insert: {
+          card_id: string
+          created_at?: string
+          id?: string
+          member_id: string
+          response_type: string
+          response_value?: string | null
+        }
+        Update: {
+          card_id?: string
+          created_at?: string
+          id?: string
+          member_id?: string
+          response_type?: string
+          response_value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "family_responses_card_id_fkey"
+            columns: ["card_id"]
+            isOneToOne: false
+            referencedRelation: "action_cards"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "family_responses_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "family_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      gift_options: {
+        Row: {
+          card_id: string
+          created_at: string
+          description: string | null
+          external_url: string | null
+          id: string
+          name: string
+          price_range: string | null
+          votes: number
+        }
+        Insert: {
+          card_id: string
+          created_at?: string
+          description?: string | null
+          external_url?: string | null
+          id?: string
+          name: string
+          price_range?: string | null
+          votes?: number
+        }
+        Update: {
+          card_id?: string
+          created_at?: string
+          description?: string | null
+          external_url?: string | null
+          id?: string
+          name?: string
+          price_range?: string | null
+          votes?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gift_options_card_id_fkey"
+            columns: ["card_id"]
+            isOneToOne: false
+            referencedRelation: "action_cards"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_group_member: {
+        Args: { _group_id: string; _user_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
