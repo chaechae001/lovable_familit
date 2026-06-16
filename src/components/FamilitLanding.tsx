@@ -221,9 +221,9 @@ function Hero() {
             체크리스트로 나누고, 함께 확인하며 완료하게 돕습니다.
           </p>
           <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row md:items-start md:justify-start">
-            <CtaButton href="#beta">베타 신청하기 →</CtaButton>
-            <CtaButton href="#how" variant="ghost">
-              어떻게 작동하는지 보기
+            <CtaButton href="/demo">서비스 미리보기 →</CtaButton>
+            <CtaButton href="#beta" variant="ghost">
+              베타 신청하기
             </CtaButton>
           </div>
           <p className="mt-5 text-xs text-muted-foreground">
