@@ -15,6 +15,7 @@ import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as OnboardingFamilyRouteImport } from './routes/onboarding.family'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppHistoryRouteImport } from './routes/app.history'
 import { Route as AppFamilyRouteImport } from './routes/app.family'
 import { Route as AppTasksNewRouteImport } from './routes/app.tasks.new'
@@ -51,6 +52,11 @@ const OnboardingFamilyRoute = OnboardingFamilyRouteImport.update({
   path: '/family',
   getParentRoute: () => OnboardingRoute,
 } as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppHistoryRoute = AppHistoryRouteImport.update({
   id: '/history',
   path: '/history',
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRouteWithChildren
   '/app/family': typeof AppFamilyRoute
   '/app/history': typeof AppHistoryRoute
+  '/app/settings': typeof AppSettingsRoute
   '/onboarding/family': typeof OnboardingFamilyRoute
   '/app/': typeof AppIndexRoute
   '/app/tasks/$id': typeof AppTasksIdRouteWithChildren
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRouteWithChildren
   '/app/family': typeof AppFamilyRoute
   '/app/history': typeof AppHistoryRoute
+  '/app/settings': typeof AppSettingsRoute
   '/onboarding/family': typeof OnboardingFamilyRoute
   '/app': typeof AppIndexRoute
   '/app/tasks/$id': typeof AppTasksIdRouteWithChildren
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRouteWithChildren
   '/app/family': typeof AppFamilyRoute
   '/app/history': typeof AppHistoryRoute
+  '/app/settings': typeof AppSettingsRoute
   '/onboarding/family': typeof OnboardingFamilyRoute
   '/app/': typeof AppIndexRoute
   '/app/tasks/$id': typeof AppTasksIdRouteWithChildren
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/app/family'
     | '/app/history'
+    | '/app/settings'
     | '/onboarding/family'
     | '/app/'
     | '/app/tasks/$id'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/app/family'
     | '/app/history'
+    | '/app/settings'
     | '/onboarding/family'
     | '/app'
     | '/app/tasks/$id'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/app/family'
     | '/app/history'
+    | '/app/settings'
     | '/onboarding/family'
     | '/app/'
     | '/app/tasks/$id'
@@ -208,6 +220,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OnboardingFamilyRouteImport
       parentRoute: typeof OnboardingRoute
     }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/history': {
       id: '/app/history'
       path: '/history'
@@ -261,6 +280,7 @@ const AppTasksIdRouteWithChildren = AppTasksIdRoute._addFileChildren(
 interface AppRouteChildren {
   AppFamilyRoute: typeof AppFamilyRoute
   AppHistoryRoute: typeof AppHistoryRoute
+  AppSettingsRoute: typeof AppSettingsRoute
   AppIndexRoute: typeof AppIndexRoute
   AppTasksIdRoute: typeof AppTasksIdRouteWithChildren
   AppTasksNewRoute: typeof AppTasksNewRoute
@@ -269,6 +289,7 @@ interface AppRouteChildren {
 const AppRouteChildren: AppRouteChildren = {
   AppFamilyRoute: AppFamilyRoute,
   AppHistoryRoute: AppHistoryRoute,
+  AppSettingsRoute: AppSettingsRoute,
   AppIndexRoute: AppIndexRoute,
   AppTasksIdRoute: AppTasksIdRouteWithChildren,
   AppTasksNewRoute: AppTasksNewRoute,
