@@ -293,7 +293,7 @@ function UseCasesSection() {
   return (
     <section className="bg-surface py-16 md:py-24">
       <div className="mx-auto w-full max-w-5xl px-5">
-        <h2 className="font-display text-3xl font-bold md:text-4xl">이런 가족 일부터 챙겨보세요.</h2>
+        <h2 className="font-display text-3xl font-bold md:text-4xl">이런 가족 일부터 체크해보세요.</h2>
         <ul className="mt-10 grid gap-4 md:grid-cols-2">
           {cases.map(({ icon: Icon, t, items }) => (
             <li key={t} className="rounded-2xl border border-border bg-background p-6">
