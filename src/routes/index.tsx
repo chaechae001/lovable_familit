@@ -220,10 +220,10 @@ function ProblemSection() {
 
 function ComparisonSection() {
   const olds = [
-    { t: "캘린더", d: "날짜는 알려주지만, 무엇을 준비해야 하는지는 알려주지 않습니다." },
-    { t: "가족 단톡방", d: "대화는 빠르지만, 결정사항과 할 일이 쉽게 흘러갑니다." },
-    { t: "여행 앱", d: "여행 코스는 잘 짜주지만, 가족 간 역할 분담과 부모님 확인에는 어울리지 않습니다." },
-    { t: "커머스 앱", d: "선물은 살 수 있지만, 가족 의견과 과거 선물 기록까지 관리하기 어렵습니다." },
+    { icon: "📅", t: "캘린더", d: "날짜는 알려주지만, 무엇을 준비해야 하는지는 알려주지 않습니다." },
+    { icon: "💬", t: "가족 단톡방", d: "대화는 빠르지만, 결정사항과 할 일이 쉽게 흘러갑니다." },
+    { icon: "✈️", t: "여행 앱", d: "여행 코스는 잘 짜주지만, 가족 간 역할 분담과 부모님 확인에는 어울리지 않습니다." },
+    { icon: "🛍️", t: "커머스 앱", d: "선물은 살 수 있지만, 가족 의견과 과거 선물 기록까지 관리하기 어렵습니다." },
   ];
   return (
     <section className="py-20 md:py-28">
@@ -232,34 +232,34 @@ function ComparisonSection() {
         <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
           캘린더 따로, 단톡방 따로<br />한번에 관리하고 싶어요.
         </h2>
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {olds.map((o) => (
-              <div key={o.t} className="rounded-2xl border border-border bg-card p-5">
-                <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">기존 방식</p>
-                <p className="mt-2 font-display text-lg font-bold">{o.t}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{o.d}</p>
-              </div>
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {olds.map((o) => (
+            <div key={o.t} className="rounded-2xl border border-border bg-card p-5">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">기존 방식</p>
+              <p className="mt-2 flex items-center gap-2 font-display text-lg font-bold">
+                <span className="text-xl">{o.icon}</span>{o.t}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{o.d}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 rounded-2xl bg-[oklch(0.62_0.07_160)] p-6 text-[oklch(0.98_0.02_160)] md:p-8">
+          <p className="text-[12px] font-semibold text-[oklch(0.94_0.06_165)]">패밀릿</p>
+          <p className="mt-3 font-display text-2xl font-bold leading-snug md:text-3xl">
+            가족이 함께 챙겨야 할 일을<br />카드로 정리하고 완료까지.
+          </p>
+          <ul className="mt-6 space-y-2.5 text-sm md:text-base">
+            {[
+              "흘러가던 대화를 액션 카드로 남깁니다",
+              "해야 할 일을 단계로 나눠줍니다",
+              "가족이 확인·응답하며 완료합니다",
+            ].map((t) => (
+              <li key={t} className="flex items-start gap-2">
+                <span className="mt-1 text-[oklch(0.94_0.06_165)]">✓</span>
+                <span>{t}</span>
+              </li>
             ))}
-          </div>
-          <div className="rounded-2xl bg-[oklch(0.48_0.08_160)] p-6 text-[oklch(0.97_0.02_160)]">
-            <p className="text-[12px] font-semibold text-[oklch(0.88_0.09_165)]">패밀릿</p>
-            <p className="mt-3 font-display text-2xl font-bold leading-snug">
-              가족이 함께 챙겨야 할 일을<br />카드로 정리하고 완료까지.
-            </p>
-            <ul className="mt-6 space-y-2.5 text-sm">
-              {[
-                "흘러가던 대화를 액션 카드로 남깁니다",
-                "해야 할 일을 단계로 나눠줍니다",
-                "가족이 확인·응답하며 완료합니다",
-              ].map((t) => (
-                <li key={t} className="flex items-start gap-2">
-                  <span className="mt-1 text-[oklch(0.88_0.09_165)]">✓</span>
-                  <span>{t}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          </ul>
         </div>
       </div>
     </section>
