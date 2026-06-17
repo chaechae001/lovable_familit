@@ -363,7 +363,7 @@ function TrustSection() {
   return (
     <section className="bg-surface py-16">
       <div className="mx-auto w-full max-w-3xl px-5">
-        <h2 className="font-display text-3xl font-bold">가족 정보를 다루는 만큼, 필요한 만큼만.</h2>
+        <h2 className="font-display text-3xl font-bold">가족 정보를 다루는 만큼,<br />안전하고 신중하게</h2>
         <ul className="mt-6 space-y-3">
           {items.map((t) => (
             <li key={t} className="flex gap-3 rounded-xl bg-background p-4 text-sm">
