@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useRouter, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { ArrowLeft, MoreHorizontal, CheckCircle2, Circle, Send, Share2 } from "lucide-react";
 import { useState } from "react";
 import { AppLayout } from "@/components/AppLayout";
