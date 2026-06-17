@@ -24,7 +24,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
             return (
               <Link
                 key={to}
-                to={to}
+                to={to as "/app"}
                 className={`flex flex-col items-center gap-1 py-3 text-[11px] ${active ? "text-primary" : "text-muted-foreground"}`}
               >
                 <Icon className="h-5 w-5" />
