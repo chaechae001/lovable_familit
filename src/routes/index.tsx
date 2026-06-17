@@ -113,8 +113,8 @@ function PhoneMockup() {
     <div className="relative mx-auto w-full max-w-[360px]">
       <div className="absolute -left-6 -top-6 h-24 w-24 rounded-full bg-accent-soft blur-2xl" />
       <div className="absolute -bottom-8 -right-4 h-28 w-28 rounded-full bg-primary-soft blur-2xl" />
-      <div className="relative rounded-[2.75rem] border border-border bg-foreground/90 p-2.5 shadow-[var(--shadow-card)]">
-        <div className="rounded-[2.25rem] bg-surface-elevated px-5 pb-6 pt-5">
+      <div className="relative rounded-[2.5rem] border border-border bg-foreground/10 p-2 shadow-[var(--shadow-card)] ring-1 ring-foreground/5">
+        <div className="rounded-[2rem] bg-surface-elevated px-5 pb-6 pt-5">
           <div className="flex items-center justify-between text-[11px] font-medium text-muted-foreground">
             <span>9:41</span>
             <MoreHorizontal className="h-4 w-4" />
@@ -122,14 +122,15 @@ function PhoneMockup() {
           <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-primary-soft px-2.5 py-1 text-[11px] font-medium text-primary">
             <CheckCircle2 className="h-3 w-3" /> 아빠가 확인했어요
           </div>
-          <p className="mt-4 font-display text-xl font-bold leading-tight">
-            안녕하세요, 민지님
-          </p>
-          <p className="mt-1 text-xs text-muted-foreground">이번 주 할 일 <span className="font-semibold text-foreground">3건</span></p>
+          <p className="mt-4 font-display text-xl font-bold leading-tight">안녕하세요, 민지님</p>
+          <p className="mt-1 text-xs text-muted-foreground">이번 주 챙길 일 <span className="font-semibold text-foreground">3건</span></p>
 
           {/* Task 1 — 생신 */}
           <div className="relative mt-4 rounded-2xl bg-primary-soft p-4">
-            <div className="absolute -right-1 -top-2 grid h-9 w-9 place-items-center rounded-full bg-accent text-base shadow-[var(--shadow-soft)]">🎂</div>
+            <div className="absolute -right-2 -top-2 grid h-9 w-9 place-items-center rounded-full bg-accent text-base shadow-[var(--shadow-soft)]">🎂</div>
+            <span className="absolute -right-3 top-9 inline-flex items-center gap-1 rounded-full bg-background px-2.5 py-1 text-[10px] font-semibold text-accent-foreground shadow-[var(--shadow-soft)]">
+              🎁 선물 후보 3개
+            </span>
             <div className="flex items-center gap-2 text-[11px] font-semibold text-primary">
               <span className="rounded-full bg-background/70 px-2 py-0.5">D-12</span>
               <span>· 생신</span>
@@ -169,9 +170,9 @@ function PhoneMockup() {
             </div>
           </div>
 
-          {/* AI hint */}
+          {/* 추천 체크리스트 */}
           <div className="mt-3 rounded-2xl border border-border bg-background/70 p-3.5">
-            <p className="text-[11px] font-semibold text-primary">✨ AI가 정리한 할 일</p>
+            <p className="text-[11px] font-semibold text-primary">✨ 추천 체크리스트</p>
             <p className="mt-1 text-[12px] text-muted-foreground">지난 기록을 바탕으로 5개 항목을 정리했어요</p>
           </div>
         </div>
