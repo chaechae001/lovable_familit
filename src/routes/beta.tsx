@@ -75,14 +75,14 @@ function BetaPage() {
 
   if (done) {
     return (
-      <div className="min-h-screen bg-[var(--surface)]">
-        <div className="mx-auto flex min-h-screen w-full max-w-[440px] flex-col items-center justify-center bg-background p-8 text-center">
+      <div className="min-h-screen bg-background">
+        <div className="mx-auto flex min-h-screen w-full max-w-xl flex-col items-center justify-center p-8 text-center">
           <span className="grid h-16 w-16 place-items-center rounded-full bg-primary-soft text-primary">
             <CheckCircle2 className="h-9 w-9" />
           </span>
           <h1 className="mt-6 font-display text-2xl font-bold">신청이 완료되었습니다.</h1>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            FAMILIT의 초기 사용자 모집에 참여해주셔서 감사합니다.
+            패밀릿의 초기 사용자 모집에 참여해주셔서 감사합니다.
             <br />추후 베타 테스트 또는 사용자 인터뷰 안내를 드릴 예정입니다.
           </p>
           <Link to="/" className="mt-8 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">처음으로</Link>
@@ -92,88 +92,101 @@ function BetaPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--surface)]">
-      <div className="mx-auto flex min-h-screen w-full max-w-[480px] flex-col bg-background">
-        <header className="flex h-14 items-center gap-3 border-b border-border px-5">
+    <div className="min-h-screen bg-background">
+      <header className="sticky top-0 z-40 border-b border-border/50 bg-background/80 backdrop-blur">
+        <div className="mx-auto flex h-16 w-full max-w-3xl items-center gap-3 px-5">
           <button onClick={() => router.history.back()} aria-label="뒤로" className="grid h-9 w-9 place-items-center rounded-full hover:bg-muted">
             <ArrowLeft className="h-5 w-5" />
           </button>
-          <h1 className="font-display text-base font-bold">FAMILIT 베타 신청</h1>
-        </header>
-        <main className="flex-1 px-6 py-6">
-          <p className="text-sm leading-relaxed text-muted-foreground">
+          <Link to="/" className="flex items-center gap-2.5">
+            <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary text-primary-foreground font-display text-sm font-bold">F</span>
+            <span className="font-display text-base font-bold tracking-tight">Familit</span>
+          </Link>
+        </div>
+      </header>
+      <main className="mx-auto w-full max-w-2xl px-5 py-10 md:py-14">
+        <div className="text-center">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-soft px-3 py-1 text-[12px] font-semibold text-primary">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />Beta
+          </span>
+          <h1 className="mt-4 font-display text-3xl font-bold md:text-4xl">패밀릿 베타 신청</h1>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             부모님 생신, 가족 모임, 기념일, 건강검진을
             <br />더 잘 챙기고 싶은 분들의 참여를 기다립니다.
           </p>
-          <form onSubmit={onSubmit} className="mt-7 space-y-5">
+        </div>
+
+        <form onSubmit={onSubmit} className="mt-8 space-y-5 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] md:p-8">
+          <div className="grid gap-5 sm:grid-cols-2">
             <Input label="이름 *" value={name} onChange={setName} />
             <Input label="이메일 *" type="email" value={email} onChange={setEmail} />
-            <Input label="연락처 *" value={phone} onChange={setPhone} placeholder="010-0000-0000" />
+          </div>
+          <Input label="연락처 *" value={phone} onChange={setPhone} placeholder="010-0000-0000" />
 
-            <Field label="연령대 *">
-              <div className="flex flex-wrap gap-1.5">
-                {AGE_GROUPS.map(([k, l]) => (
-                  <button
-                    key={k}
-                    type="button"
-                    onClick={() => setAgeGroup(k)}
-                    className={`rounded-full border px-3 py-1.5 text-xs font-medium ${
-                      ageGroup === k ? "border-primary bg-primary-soft text-primary" : "border-border text-muted-foreground"
-                    }`}
-                  >{l}</button>
-                ))}
-              </div>
-            </Field>
+          <Field label="연령대 *">
+            <div className="flex flex-wrap gap-1.5">
+              {AGE_GROUPS.map(([k, l]) => (
+                <button
+                  key={k}
+                  type="button"
+                  onClick={() => setAgeGroup(k)}
+                  className={`rounded-full border px-3.5 py-2 text-xs font-medium transition ${
+                    ageGroup === k ? "border-primary bg-primary-soft text-primary" : "border-border text-muted-foreground hover:border-primary/50"
+                  }`}
+                >{l}</button>
+              ))}
+            </div>
+          </Field>
 
-            <Field label="부모님과 별도 거주 여부 *">
-              <div className="flex gap-2">
-                {[[true, "예"], [false, "아니요"]].map(([v, l]) => (
-                  <button
-                    key={String(v)}
-                    type="button"
-                    onClick={() => setLivesApart(v as boolean)}
-                    className={`flex-1 rounded-xl border-2 px-3 py-2.5 text-sm font-semibold ${
-                      livesApart === v ? "border-primary bg-primary-soft text-primary" : "border-border text-muted-foreground"
-                    }`}
-                  >{l as string}</button>
-                ))}
-              </div>
-            </Field>
+          <Field label="부모님과 별도 거주 여부 *">
+            <div className="flex gap-2">
+              {[[true, "예"], [false, "아니요"]].map(([v, l]) => (
+                <button
+                  key={String(v)}
+                  type="button"
+                  onClick={() => setLivesApart(v as boolean)}
+                  className={`flex-1 rounded-xl border-2 px-3 py-3 text-sm font-semibold transition ${
+                    livesApart === v ? "border-primary bg-primary-soft text-primary" : "border-border text-muted-foreground hover:border-primary/50"
+                  }`}
+                >{l as string}</button>
+              ))}
+            </div>
+          </Field>
 
-            <Input label="가족 구성원 수" type="number" value={familyCount} onChange={setFamilyCount} placeholder="예: 4" />
+          <Input label="가족 구성원 수" type="number" value={familyCount} onChange={setFamilyCount} placeholder="예: 4" />
 
-            <Field label="가장 챙기기 어려운 가족 일">
-              <div className="flex flex-wrap gap-1.5">
-                {HARDEST_OPTIONS.map((o) => (
-                  <button
-                    key={o}
-                    type="button"
-                    onClick={() => setHardest(o)}
-                    className={`rounded-full border px-3 py-1.5 text-xs font-medium ${
-                      hardest === o ? "border-primary bg-primary-soft text-primary" : "border-border text-muted-foreground"
-                    }`}
-                  >{o}</button>
-                ))}
-              </div>
-            </Field>
+          <Field label="가장 챙기기 어려운 가족 일">
+            <div className="flex flex-wrap gap-1.5">
+              {HARDEST_OPTIONS.map((o) => (
+                <button
+                  key={o}
+                  type="button"
+                  onClick={() => setHardest(o)}
+                  className={`rounded-full border px-3.5 py-2 text-xs font-medium transition ${
+                    hardest === o ? "border-primary bg-primary-soft text-primary" : "border-border text-muted-foreground hover:border-primary/50"
+                  }`}
+                >{o}</button>
+              ))}
+            </div>
+          </Field>
 
-            <label className="flex items-center gap-2 text-sm">
-              <input type="checkbox" checked={interview} onChange={(e) => setInterview(e.target.checked)} />
-              사용자 인터뷰 참여 가능
-            </label>
+          <label className="flex items-center gap-2 rounded-xl bg-surface px-4 py-3 text-sm">
+            <input type="checkbox" checked={interview} onChange={(e) => setInterview(e.target.checked)} />
+            사용자 인터뷰 참여 가능
+          </label>
 
-            {error && <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive">{error}</p>}
+          {error && <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive">{error}</p>}
 
-            <button
-              type="submit"
-              disabled={submitting}
-              className="w-full rounded-2xl bg-primary px-4 py-4 text-base font-bold text-primary-foreground disabled:opacity-50"
-            >
-              {submitting ? "신청 중..." : "베타 신청하기"}
-            </button>
-          </form>
-        </main>
-      </div>
+          <button
+            type="submit"
+            disabled={submitting}
+            className="w-full rounded-2xl bg-primary px-4 py-4 text-base font-bold text-primary-foreground shadow-[var(--shadow-cta)] disabled:opacity-50"
+          >
+            {submitting ? "신청 중..." : "베타 신청하기"}
+          </button>
+          <p className="text-center text-[11px] text-muted-foreground">입력 정보는 베타 초대 안내 목적 외에는 사용하지 않습니다.</p>
+        </form>
+      </main>
     </div>
   );
 }

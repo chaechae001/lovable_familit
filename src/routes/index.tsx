@@ -102,7 +102,7 @@ function Hero() {
             <br className="hidden sm:block" />
             놓치기 쉬운 일을 한곳에 정리하여 가족이 함께 확인할 수 있게 도와줍니다.
           </p>
-          <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row md:items-start md:justify-start">
+          <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link to="/demo" className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-[15px] font-semibold text-primary-foreground shadow-[var(--shadow-cta)] transition hover:-translate-y-[1px]">
               서비스 미리보기 <ArrowRight className="h-4 w-4" />
             </Link>
@@ -110,10 +110,6 @@ function Hero() {
               베타 신청하기
             </Link>
           </div>
-          <p className="mt-5 flex items-center justify-center gap-1.5 text-xs text-muted-foreground md:justify-start">
-            <span aria-hidden="true">⏱</span>
-            신청 1분 · 의료 진단을 하지 않는 가족 케어 도구입니다
-          </p>
         </div>
         <PhoneMockup />
       </div>
@@ -127,7 +123,7 @@ function PhoneMockup() {
       <div className="absolute -left-6 -top-6 h-24 w-24 rounded-full bg-accent-soft blur-2xl" />
       <div className="absolute -bottom-8 -right-4 h-28 w-28 rounded-full bg-primary-soft blur-2xl" />
       <div className="relative rounded-[2.5rem] border border-border bg-foreground/10 p-2 shadow-[var(--shadow-card)] ring-1 ring-foreground/5">
-        <div className="rounded-[2rem] bg-surface-elevated px-5 pb-6 pt-5">
+        <div className="rounded-[2rem] bg-card px-5 pb-6 pt-5">
           <div className="flex items-center justify-between text-[11px] font-medium text-muted-foreground">
             <span>9:41</span>
             <MoreHorizontal className="h-4 w-4" />
@@ -135,34 +131,51 @@ function PhoneMockup() {
           <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-primary-soft px-2.5 py-1 text-[11px] font-medium text-primary">
             <CheckCircle2 className="h-3 w-3" /> 아빠가 확인했어요
           </div>
-          <p className="mt-4 font-display text-xl font-bold leading-tight">안녕하세요, 민지님</p>
+          <p className="mt-4 font-display text-xl font-bold leading-tight">안녕하세요, 지원님</p>
           <p className="mt-1 text-xs text-muted-foreground">이번 주 챙길 일 <span className="font-semibold text-foreground">3건</span></p>
 
           <div className="relative mt-4 rounded-2xl bg-primary-soft p-4">
             <div className="absolute -right-2 -top-2 grid h-9 w-9 place-items-center rounded-full bg-accent text-base shadow-[var(--shadow-soft)]">🎂</div>
-            <span className="absolute -right-3 top-9 inline-flex items-center gap-1 rounded-full bg-background px-2.5 py-1 text-[10px] font-semibold text-accent-foreground shadow-[var(--shadow-soft)]">
+            <span className="absolute -right-3 top-9 inline-flex items-center gap-1 rounded-full bg-card px-2.5 py-1 text-[10px] font-semibold text-accent-foreground shadow-[var(--shadow-soft)]">
               🎁 선물 후보 3개
             </span>
             <div className="flex items-center gap-2 text-[11px] font-semibold text-primary">
-              <span className="rounded-full bg-background/70 px-2 py-0.5">D-12</span>
+              <span className="rounded-full bg-card/80 px-2 py-0.5">D-12</span>
               <span>· 생신</span>
             </div>
             <p className="mt-1.5 font-display text-base font-bold">엄마 생신 준비</p>
             <ul className="mt-2.5 space-y-1.5 text-[12px]">
-              <li className="flex items-center gap-2"><CheckCircle2 className="h-3.5 w-3.5 text-primary" /><span className="text-foreground/80 line-through">선물 후보 정하기</span></li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="h-3.5 w-3.5 text-primary" /><span className="text-foreground/80 line-through">선물 후보 정리</span></li>
               <li className="flex items-center gap-2"><span className="h-3.5 w-3.5 rounded-full border border-primary/40" /><span>가족 의견 받기 · 2/3</span></li>
-              <li className="flex items-center gap-2"><span className="h-3.5 w-3.5 rounded-full border border-primary/40" /><span>식당 정하기</span></li>
+              <li className="flex items-center gap-2"><span className="h-3.5 w-3.5 rounded-full border border-primary/40" /><span>식당 예약 확인</span></li>
             </ul>
+            <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-card/80 px-2.5 py-1 text-[10px] font-medium text-foreground/70">
+              <span className="flex -space-x-1">
+                <span className="grid h-4 w-4 place-items-center rounded-full bg-accent text-[8px] font-bold ring-1 ring-card">엄</span>
+                <span className="grid h-4 w-4 place-items-center rounded-full bg-primary text-[8px] font-bold text-primary-foreground ring-1 ring-card">행</span>
+                <span className="grid h-4 w-4 place-items-center rounded-full bg-foreground text-[8px] font-bold text-background ring-1 ring-card">나</span>
+              </span>
+              가족 3명 참여중
+            </div>
           </div>
 
           <div className="relative mt-3 rounded-2xl bg-accent-soft p-4">
             <div className="absolute right-3 top-3 text-base">🩺</div>
             <div className="flex items-center gap-2 text-[11px] font-semibold text-accent-foreground">
-              <span className="rounded-full bg-background/70 px-2 py-0.5">D-3</span>
+              <span className="rounded-full bg-card/80 px-2 py-0.5">D-3</span>
               <span>· 건강검진</span>
             </div>
             <p className="mt-1.5 font-display text-base font-bold">아빠 건강검진</p>
             <p className="mt-1.5 text-[12px] text-muted-foreground">전날 밤 9시 이후 금식 · 신분증 챙기기</p>
+            <div className="mt-3 flex items-center justify-between">
+              <span className="text-[11px] text-muted-foreground">아빠 확인 대기</span>
+              <button className="rounded-full bg-foreground px-3 py-1.5 text-[11px] font-semibold text-background">확인했어요</button>
+            </div>
+          </div>
+
+          <div className="mt-3 rounded-2xl border border-dashed border-border bg-card p-4">
+            <p className="text-[11px] font-semibold text-accent-foreground">✨ 추천 체크리스트</p>
+            <p className="mt-1 text-[12px] text-muted-foreground">지난 명절 기록을 바탕으로 5개 항목을 정리했어요</p>
           </div>
         </div>
       </div>
@@ -175,14 +188,14 @@ function PhoneMockup() {
 function ProblemSection() {
   const problems = [
     { e: "🎂", t: "부모님 생신을 매년 급하게 준비하게 됩니다." },
-    { e: "🎁", t: "명절 선물과 모임 준비가 늘 한 사람에게 몰립니다." },
+    { e: "🗓️", t: "가족 모임 날짜를 정하는 데 오래 걸립니다." },
     { e: "🩺", t: "건강검진 예약·준비물·결과 확인을 놓치기 쉽습니다." },
     { e: "💬", t: "가족 단톡방에서 같은 질문과 답이 반복됩니다." },
     { e: "📅", t: "캘린더에 적어도 실제 준비 행동으로 이어지지 않습니다." },
   ];
   return (
     <section id="problem" className="bg-surface py-20 md:py-28">
-      <div className="mx-auto w-full max-w-5xl px-5">
+      <div className="mx-auto w-full max-w-6xl px-5">
         <SectionTag>Problem</SectionTag>
         <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
           가족을 챙기는 일,<br />마음만으로는 어렵습니다.
@@ -190,9 +203,9 @@ function ProblemSection() {
         <p className="mt-4 text-muted-foreground">
           바쁜 일상 속에서 가족 일은 걱정은 되지만 쉽게 미뤄지고 흩어집니다.
         </p>
-        <ul className="mt-8 grid gap-3 md:grid-cols-2">
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {problems.map((p) => (
-            <li key={p.t} className="flex items-start gap-3 rounded-2xl border border-border bg-background p-5 shadow-[var(--shadow-soft)]">
+            <li key={p.t} className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)]">
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-accent-soft text-lg">{p.e}</span>
               <span className="text-sm leading-relaxed pt-1.5">{p.t}</span>
             </li>
@@ -203,7 +216,7 @@ function ProblemSection() {
   );
 }
 
-/* ---------------- Comparison (4 grey + 1 dark green) ---------------- */
+/* ---------------- Comparison ---------------- */
 
 function ComparisonSection() {
   const olds = [
@@ -215,20 +228,22 @@ function ComparisonSection() {
   return (
     <section className="py-20 md:py-28">
       <div className="mx-auto w-full max-w-6xl px-5">
-        <SectionTag>Why Familit</SectionTag>
-        <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">말해두고, 적어두는 것만으로는 부족합니다.</h2>
+        <SectionTag>Why 패밀릿</SectionTag>
+        <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
+          캘린더 따로, 단톡방 따로<br />한번에 관리하고 싶어요.
+        </h2>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {olds.map((o) => (
-              <div key={o.t} className="rounded-2xl border border-border bg-background p-5">
+              <div key={o.t} className="rounded-2xl border border-border bg-card p-5">
                 <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">기존 방식</p>
                 <p className="mt-2 font-display text-lg font-bold">{o.t}</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{o.d}</p>
               </div>
             ))}
           </div>
-          <div className="rounded-2xl bg-[oklch(0.32_0.06_165)] p-6 text-[oklch(0.97_0.02_160)]">
-            <p className="text-[12px] font-semibold text-[oklch(0.85_0.1_165)]">Familit</p>
+          <div className="rounded-2xl bg-[oklch(0.48_0.08_160)] p-6 text-[oklch(0.97_0.02_160)]">
+            <p className="text-[12px] font-semibold text-[oklch(0.88_0.09_165)]">패밀릿</p>
             <p className="mt-3 font-display text-2xl font-bold leading-snug">
               가족이 함께 챙겨야 할 일을<br />카드로 정리하고 완료까지.
             </p>
@@ -239,7 +254,7 @@ function ComparisonSection() {
                 "가족이 확인·응답하며 완료합니다",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-2">
-                  <span className="mt-1 text-[oklch(0.85_0.1_165)]">✓</span>
+                  <span className="mt-1 text-[oklch(0.88_0.09_165)]">✓</span>
                   <span>{t}</span>
                 </li>
               ))}
@@ -251,7 +266,7 @@ function ComparisonSection() {
   );
 }
 
-/* ---------------- Solution (01/02/03) ---------------- */
+/* ---------------- Solution ---------------- */
 
 function SolutionSection() {
   const steps = [
@@ -264,7 +279,7 @@ function SolutionSection() {
       <div className="mx-auto w-full max-w-6xl px-5">
         <SectionTag>Solution</SectionTag>
         <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
-          Familit은 가족 일을<br />
+          패밀릿은 가족 일을<br />
           <span className="text-primary">'액션 카드'</span>로 바꿉니다.
         </h2>
         <p className="mt-4 max-w-2xl text-muted-foreground">
@@ -272,7 +287,7 @@ function SolutionSection() {
         </p>
         <ol className="mt-10 grid gap-5 md:grid-cols-3">
           {steps.map((s) => (
-            <li key={s.n} className="rounded-2xl border border-border bg-background p-7 shadow-[var(--shadow-soft)]">
+            <li key={s.n} className="rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-soft)]">
               <span className="font-display text-5xl font-extrabold text-primary/80">{s.n}</span>
               <p className="mt-4 font-display text-lg font-bold">{s.t}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
@@ -284,7 +299,7 @@ function SolutionSection() {
   );
 }
 
-/* ---------------- Features (colored icon squares) ---------------- */
+/* ---------------- Features ---------------- */
 
 function FeaturesSection() {
   const feats = [
@@ -299,9 +314,9 @@ function FeaturesSection() {
       <div className="mx-auto w-full max-w-6xl px-5">
         <SectionTag>Features</SectionTag>
         <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">가족을 챙기는 일을 더 쉽게.</h2>
-        <ul className="mt-10 grid gap-5 md:grid-cols-2">
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {feats.map((f) => (
-            <li key={f.t} className="rounded-2xl border border-border bg-background p-6 shadow-[var(--shadow-soft)]">
+            <li key={f.t} className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)]">
               <span className={`grid h-12 w-12 place-items-center rounded-xl ${f.bg} text-xl`}>{f.icon}</span>
               <p className="mt-4 font-display text-lg font-bold">{f.t}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.d}</p>
@@ -313,7 +328,7 @@ function FeaturesSection() {
   );
 }
 
-/* ---------------- Use cases (icon + badge + checklist) ---------------- */
+/* ---------------- Use cases ---------------- */
 
 function UseCasesSection() {
   const cases = [
@@ -325,10 +340,10 @@ function UseCasesSection() {
     <section className="bg-surface py-20 md:py-28">
       <div className="mx-auto w-full max-w-6xl px-5">
         <SectionTag>Use cases</SectionTag>
-        <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">내가 겪는 상황, 그대로.</h2>
+        <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">이런 가족일부터 체크해보세요.</h2>
         <ul className="mt-10 grid gap-5 md:grid-cols-3">
           {cases.map((c) => (
-            <li key={c.t} className="rounded-2xl border border-border bg-background p-6 shadow-[var(--shadow-soft)]">
+            <li key={c.t} className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)]">
               <div className="flex items-start justify-between">
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-xl">{c.icon}</span>
                 <span className="rounded-full bg-muted px-3 py-1 text-[11px] font-semibold text-muted-foreground">{c.badge}</span>
@@ -359,11 +374,12 @@ function ParentSection() {
         <div>
           <SectionTag>Parent friendly</SectionTag>
           <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
-            부모님은 복잡하게<br />쓰지 않아도 됩니다.
+            부모님 화면은<br />심플하게.
           </h2>
           <p className="mt-4 leading-relaxed text-muted-foreground">
-            부모님 화면은 관리 기능 대신, 확인과 응답에 집중합니다.
-            큰 글씨, 단순한 버튼, 한 화면에 하나의 목적. 입력보다는 선택으로 진행되는 부드러운 흐름을 지향합니다.
+            패밀릿은 부모님이 모든 기능을 직접 관리할 필요 없도록 설계합니다.
+            <br />
+            부모님은 필요한 순간에 확인하고 선택하면 됩니다.
           </p>
           <ul className="mt-5 space-y-1.5 text-sm text-muted-foreground">
             <li>· 한 번에 한 가지만 묻습니다</li>
@@ -371,7 +387,7 @@ function ParentSection() {
             <li>· 답은 보통 한 번의 터치로 끝납니다</li>
           </ul>
         </div>
-        <div className="rounded-3xl border border-border bg-background p-6 shadow-[var(--shadow-card)]">
+        <div className="rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
           <p className="text-xs text-muted-foreground">아들 지원이가 보냈어요</p>
           <p className="mt-2 font-display text-2xl font-bold leading-snug">
             엄마, 이번 생신 식당<br />이 날짜 괜찮으세요?
@@ -381,8 +397,8 @@ function ParentSection() {
             <p className="mt-0.5 text-xs text-muted-foreground">한정식 · 집에서 15분</p>
           </div>
           <button className="mt-4 w-full rounded-2xl bg-primary px-5 py-4 text-base font-bold text-primary-foreground">확인했어요</button>
-          <button className="mt-2 w-full rounded-2xl border-2 border-border bg-background px-5 py-4 text-base font-semibold">가능해요</button>
-          <button className="mt-2 w-full rounded-2xl border-2 border-border bg-background px-5 py-4 text-base font-semibold">이 날짜가 좋아요</button>
+          <button className="mt-2 w-full rounded-2xl border-2 border-border bg-card px-5 py-4 text-base font-semibold">가능해요</button>
+          <button className="mt-2 w-full rounded-2xl border-2 border-border bg-card px-5 py-4 text-base font-semibold">이 날짜가 좋아요</button>
           <p className="mt-3 text-center text-[11px] text-muted-foreground">한 번만 누르면 가족이 바로 볼 수 있어요</p>
         </div>
       </div>
@@ -405,7 +421,7 @@ function HowItWorksSection() {
         <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">3단계면 충분합니다.</h2>
         <ol className="mt-10 grid gap-5 md:grid-cols-3">
           {steps.map((s) => (
-            <li key={s.n} className="rounded-2xl border border-border bg-background p-6 shadow-[var(--shadow-soft)]">
+            <li key={s.n} className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)]">
               <span className="grid h-9 w-9 place-items-center rounded-full bg-primary font-display text-sm font-bold text-primary-foreground">{s.n}</span>
               <p className="mt-4 font-display text-lg font-bold">{s.t}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
@@ -434,7 +450,7 @@ function TrustSection() {
         </h2>
         <ul className="mt-6 space-y-3">
           {items.map((t) => (
-            <li key={t} className="flex gap-3 rounded-2xl border border-border bg-surface p-4 text-sm">
+            <li key={t} className="flex gap-3 rounded-2xl border border-border bg-card p-4 text-sm">
               <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" />{t}
             </li>
           ))}
@@ -448,7 +464,7 @@ function TrustSection() {
 
 function FAQSection() {
   const faqs: Array<[string, string]> = [
-    ["FAMILIT은 어떤 앱인가요?", "부모님 생신, 가족 모임, 기념일, 건강검진처럼 가족끼리 챙겨야 할 일을 한곳에 정리하고 가족이 함께 확인하는 앱입니다."],
+    ["패밀릿은 어떤 앱인가요?", "부모님 생신, 가족 모임, 기념일, 건강검진처럼 가족끼리 챙겨야 할 일을 한곳에 정리하고 가족이 함께 확인하는 앱입니다."],
     ["일반 캘린더와 무엇이 다른가요?", "단순한 일정 기록이 아니라 가능한 날짜, 맡을 사람, 가족 확인 상태까지 함께 관리합니다."],
     ["부모님도 앱을 잘 써야 하나요?", "아니요. 부모님은 큰 버튼으로 확인만 해주시면 됩니다. 자녀가 정리합니다."],
     ["혼자 먼저 사용해도 되나요?", "네. 혼자 챙길 일을 정리하고 나중에 가족을 초대할 수 있습니다."],
@@ -465,12 +481,12 @@ function FAQSection() {
         <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
           궁금하신 점,<br />먼저 답해드릴게요.
         </h2>
-        <ul className="mt-8 divide-y divide-border rounded-2xl border border-border bg-background">
+        <ul className="mt-8 space-y-3">
           {faqs.map(([q, a], i) => (
-            <li key={q}>
-              <button onClick={() => setOpen(open === i ? null : i)} className="flex w-full items-center justify-between px-5 py-4 text-left">
+            <li key={q} className="rounded-2xl border border-border bg-card shadow-[var(--shadow-soft)]">
+              <button onClick={() => setOpen(open === i ? null : i)} className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left">
                 <span className="font-medium">{q}</span>
-                <span className="text-lg text-muted-foreground">{open === i ? "−" : "+"}</span>
+                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary-soft text-base font-bold text-primary">{open === i ? "−" : "+"}</span>
               </button>
               {open === i && <p className="px-5 pb-5 text-sm leading-relaxed text-muted-foreground">{a}</p>}
             </li>
@@ -487,15 +503,15 @@ function BetaCTASection() {
   return (
     <section className="py-20 md:py-28">
       <div className="mx-auto w-full max-w-5xl px-5">
-        <div className="rounded-3xl border border-border bg-background p-8 shadow-[var(--shadow-card)] md:p-12">
+        <div className="rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-card)] md:p-12">
           <div className="grid gap-10 md:grid-cols-2">
             <div>
               <SectionTag>Beta</SectionTag>
               <h2 className="mt-4 font-display text-3xl font-bold leading-tight md:text-4xl">
-                Familit의 첫 사용자로<br />함께해주세요.
+                패밀릿의 첫 사용자로<br />함께해주세요.
               </h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                Familit은 현재 초기 MVP를 준비 중입니다. 부모님과 떨어져 살며 생신, 명절, 건강검진을 더 잘 챙기고 싶은 분들의 베타 참여를 기다립니다.
+                패밀릿은 현재 초기 MVP를 준비 중입니다. 부모님과 떨어져 살며 생신, 명절, 건강검진을 더 잘 챙기고 싶은 분들의 베타 참여를 기다립니다.
               </p>
               <ul className="mt-5 space-y-2 text-sm">
                 {[
@@ -513,7 +529,7 @@ function BetaCTASection() {
               <Link to="/beta" className="mt-2 inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-base font-bold text-primary-foreground shadow-[var(--shadow-cta)]">
                 베타 신청하기 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/demo" className="inline-flex items-center justify-center rounded-2xl border-2 border-border bg-background px-6 py-4 text-base font-semibold">
+              <Link to="/demo" className="inline-flex items-center justify-center rounded-2xl border-2 border-border bg-card px-6 py-4 text-base font-semibold">
                 서비스 미리보기
               </Link>
               <p className="text-center text-[11px] text-muted-foreground">입력 정보는 베타 초대 안내 목적 외에는 사용하지 않습니다.</p>
