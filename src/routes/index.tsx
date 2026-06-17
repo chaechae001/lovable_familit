@@ -393,7 +393,7 @@ function FAQSection() {
     <section id="faq" className="py-20 md:py-28">
 
       <div className="mx-auto w-full max-w-3xl px-5">
-        <h2 className="font-display text-3xl font-bold md:text-4xl">자주 묻는 질문</h2>
+        <h2 className="font-display text-3xl font-bold md:text-4xl">궁금하신 점,<br />먼저 답해드릴게요.</h2>
         <ul className="mt-8 divide-y divide-border rounded-2xl border border-border bg-surface">
           {faqs.map(([q, a], i) => (
             <li key={q}>
