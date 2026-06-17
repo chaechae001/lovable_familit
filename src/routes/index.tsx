@@ -64,34 +64,43 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--primary-soft)_0%,_transparent_55%)]" />
-      <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 py-16 md:grid-cols-[1.05fr_1fr] md:items-center md:py-28">
-        <div>
-          <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-4 py-1.5 text-xs font-semibold text-primary">
+    <section id="top" className="relative overflow-hidden px-5 pt-10 pb-16 sm:pt-16 sm:pb-24">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 80% 10%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 70%), radial-gradient(50% 50% at 10% 60%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 70%)",
+        }}
+      />
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-2 md:gap-10">
+        <div className="text-center md:text-left">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-3.5 py-1.5 text-xs font-semibold tracking-wide text-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             부모님과 떨어져 사는 가족을 위한
-          </span>
-          <h1 className="mt-6 font-display text-[2.6rem] font-bold leading-[1.15] tracking-tight md:text-6xl">
+          </div>
+          <h1 className="mt-5 font-display text-[34px] font-extrabold leading-[1.15] tracking-tight sm:text-5xl md:text-[52px]">
             가족을 챙기는 마음이
             <br />
-            <span className="text-primary">행동으로 이어지도록</span>
+            <span className="text-primary">행동으로 이어지도록.</span>
           </h1>
-          <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p className="mx-auto mt-5 max-w-xl text-[15.5px] leading-relaxed text-muted-foreground md:mx-0 md:text-base">
             부모님 생신, 가족 모임, 기념일, 건강검진처럼
-            <br />
-            놓치기 쉬운 일을 한곳에 정리하여
-            <br />
-            가족이 함께 확인할 수 있게 도와줍니다.
+            <br className="hidden sm:block" />
+            놓치기 쉬운 일을 한곳에 정리하여 가족이 함께 확인할 수 있게 도와줍니다.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/demo" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-[var(--shadow-cta)] transition hover:opacity-90">
+          <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row md:items-start md:justify-start">
+            <Link to="/demo" className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-[15px] font-semibold text-primary-foreground shadow-[var(--shadow-cta)] transition hover:-translate-y-[1px]">
               서비스 미리보기 <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/beta" className="inline-flex items-center rounded-full bg-foreground px-7 py-3.5 text-base font-semibold text-background hover:opacity-90">
+            <Link to="/beta" className="inline-flex items-center justify-center rounded-full bg-foreground px-6 py-3.5 text-[15px] font-semibold text-background hover:opacity-90">
               베타 신청하기
             </Link>
           </div>
+          <p className="mt-5 flex items-center justify-center gap-1.5 text-xs text-muted-foreground md:justify-start">
+            <span aria-hidden="true">⏱</span>
+            신청 1분 · 의료 진단을 하지 않는 가족 케어 도구입니다
+          </p>
         </div>
         <PhoneMockup />
       </div>
