@@ -2,13 +2,13 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Home, ListChecks, Users, History, Settings } from "lucide-react";
 import type { ReactNode } from "react";
 
-const NAV = [
+const NAV: Array<{ to: string; label: string; icon: typeof Home; exact?: boolean }> = [
   { to: "/app", label: "홈", icon: Home, exact: true },
   { to: "/app/tasks/new", label: "챙길 일", icon: ListChecks },
   { to: "/app/family", label: "가족", icon: Users },
   { to: "/app/history", label: "기록", icon: History },
   { to: "/app/settings", label: "설정", icon: Settings },
-] as const;
+];
 
 export function AppLayout({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
