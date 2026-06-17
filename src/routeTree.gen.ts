@@ -14,6 +14,7 @@ import { Route as DemoRouteImport } from './routes/demo'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as ParentShareTokenRouteImport } from './routes/parent.$shareToken'
 import { Route as OnboardingFamilyRouteImport } from './routes/onboarding.family'
 import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppHistoryRouteImport } from './routes/app.history'
@@ -46,6 +47,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppRoute,
+} as any)
+const ParentShareTokenRoute = ParentShareTokenRouteImport.update({
+  id: '/parent/$shareToken',
+  path: '/parent/$shareToken',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const OnboardingFamilyRoute = OnboardingFamilyRouteImport.update({
   id: '/family',
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/app/history': typeof AppHistoryRoute
   '/app/settings': typeof AppSettingsRoute
   '/onboarding/family': typeof OnboardingFamilyRoute
+  '/parent/$shareToken': typeof ParentShareTokenRoute
   '/app/': typeof AppIndexRoute
   '/app/tasks/$id': typeof AppTasksIdRouteWithChildren
   '/app/tasks/new': typeof AppTasksNewRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/app/history': typeof AppHistoryRoute
   '/app/settings': typeof AppSettingsRoute
   '/onboarding/family': typeof OnboardingFamilyRoute
+  '/parent/$shareToken': typeof ParentShareTokenRoute
   '/app': typeof AppIndexRoute
   '/app/tasks/$id': typeof AppTasksIdRouteWithChildren
   '/app/tasks/new': typeof AppTasksNewRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/app/history': typeof AppHistoryRoute
   '/app/settings': typeof AppSettingsRoute
   '/onboarding/family': typeof OnboardingFamilyRoute
+  '/parent/$shareToken': typeof ParentShareTokenRoute
   '/app/': typeof AppIndexRoute
   '/app/tasks/$id': typeof AppTasksIdRouteWithChildren
   '/app/tasks/new': typeof AppTasksNewRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/app/history'
     | '/app/settings'
     | '/onboarding/family'
+    | '/parent/$shareToken'
     | '/app/'
     | '/app/tasks/$id'
     | '/app/tasks/new'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/app/history'
     | '/app/settings'
     | '/onboarding/family'
+    | '/parent/$shareToken'
     | '/app'
     | '/app/tasks/$id'
     | '/app/tasks/new'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/app/history'
     | '/app/settings'
     | '/onboarding/family'
+    | '/parent/$shareToken'
     | '/app/'
     | '/app/tasks/$id'
     | '/app/tasks/new'
@@ -174,6 +186,7 @@ export interface RootRouteChildren {
   AppRoute: typeof AppRouteWithChildren
   DemoRoute: typeof DemoRoute
   OnboardingRoute: typeof OnboardingRouteWithChildren
+  ParentShareTokenRoute: typeof ParentShareTokenRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +225,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
+    }
+    '/parent/$shareToken': {
+      id: '/parent/$shareToken'
+      path: '/parent/$shareToken'
+      fullPath: '/parent/$shareToken'
+      preLoaderRoute: typeof ParentShareTokenRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/onboarding/family': {
       id: '/onboarding/family'
@@ -314,6 +334,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppRoute: AppRouteWithChildren,
   DemoRoute: DemoRoute,
   OnboardingRoute: OnboardingRouteWithChildren,
+  ParentShareTokenRoute: ParentShareTokenRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
