@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CheckCircle2, Calendar, Heart, Gift, Stethoscope, Sparkles, Cake, MoreHorizontal } from "lucide-react";
+import { ArrowRight, CheckCircle2, Calendar, Heart, Gift, Stethoscope, Sparkles, MoreHorizontal } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
