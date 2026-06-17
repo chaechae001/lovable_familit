@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CheckCircle2, Calendar, Heart, Gift, Stethoscope, Sparkles, MoreHorizontal } from "lucide-react";
+import { ArrowRight, CheckCircle2, Calendar, Heart, Gift, Stethoscope, MoreHorizontal } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
@@ -70,7 +70,7 @@ function Hero() {
         <div>
           <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-4 py-1.5 text-xs font-semibold text-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            부모님과 떨어져 사는 30·40대를 위한
+            부모님과 떨어져 사는 가족을 위한
           </span>
           <h1 className="mt-6 font-display text-[2.6rem] font-bold leading-[1.15] tracking-tight md:text-6xl">
             가족을 챙기는 마음이
@@ -92,9 +92,6 @@ function Hero() {
               베타 신청하기
             </Link>
           </div>
-          <p className="mt-5 flex items-center gap-2 text-xs text-muted-foreground">
-            <Sparkles className="h-3.5 w-3.5 text-primary" /> 신청 1분 · 의료 진단을 하지 않는 가족 챙김 도구입니다
-          </p>
         </div>
         <PhoneMockup />
       </div>
@@ -117,9 +114,9 @@ function PhoneMockup() {
             <CheckCircle2 className="h-3 w-3" /> 아빠가 확인했어요
           </div>
           <p className="mt-4 font-display text-xl font-bold leading-tight">
-            안녕하세요, 지원님
+            안녕하세요, 민지님
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">오늘 챙길 가족 일 <span className="font-semibold text-foreground">3건</span></p>
+          <p className="mt-1 text-xs text-muted-foreground">이번 주 할 일 <span className="font-semibold text-foreground">3건</span></p>
 
           {/* Task 1 — 생신 */}
           <div className="relative mt-4 rounded-2xl bg-primary-soft p-4">
@@ -176,20 +173,19 @@ function PhoneMockup() {
 
 function ProblemSection() {
   const problems = [
-    "부모님 생신은 매년 돌아오지만 준비는 늘 급합니다.",
-    "가족 모임 날짜는 정하는 데 오래 걸립니다.",
-    "기념일은 기억해도 실제 준비할 일은 따로 남습니다.",
-    "건강검진 일정은 놓치면 더 마음이 쓰입니다.",
-    "결국 챙기는 사람만 계속 챙기게 됩니다.",
+    "바쁜 일상 속에서 부모님 생신을 급하게 준비하는 경우가 생깁니다.",
+    "가족 모임 날짜를 정하는 데 오래 걸립니다.",
+    "건강검진 일정을 놓치면 더 마음이 쓰입니다.",
+    "가족 단톡방에서 얘기를 해도 기억하기 어렵습니다.",
+    "캘린더에 적어도 실제 행동으로 이어지기 힘듭니다.",
   ];
   return (
     <section id="problem" className="bg-surface py-20 md:py-28">
 
       <div className="mx-auto w-full max-w-4xl px-5">
-        <h2 className="font-display text-3xl font-bold md:text-4xl">가족 일은 마음만으로 챙기기 어렵습니다.</h2>
+        <h2 className="font-display text-3xl font-bold md:text-4xl">가족을 챙기는 일,<br />마음만으로는 어렵습니다.</h2>
         <p className="mt-4 text-muted-foreground">
-          부모님 생신, 가족 모임, 기념일, 건강검진처럼 가족끼리 챙겨야 할 일은 반복되지만
-          바쁜 일상 속에서는 쉽게 미뤄지고 흩어집니다.
+          바쁜 일상 속에서 가족 일은 걱정은 되지만 쉽게 미뤄지고 흩어집니다.
         </p>
         <ul className="mt-8 grid gap-3 md:grid-cols-2">
           {problems.map((p, i) => (
@@ -246,7 +242,7 @@ function SolutionSection() {
     <section id="solution" className="bg-surface py-20 md:py-28">
 
       <div className="mx-auto w-full max-w-5xl px-5">
-        <h2 className="font-display text-3xl font-bold md:text-4xl">FAMILIT은 가족이 함께 챙길 일을 한곳에 모아줍니다.</h2>
+        <h2 className="font-display text-3xl font-bold md:text-4xl">패밀릿은 가족이 함께 챙길 일을<br />'액션 카드'로 모아줍니다.</h2>
         <ol className="mt-10 grid gap-4 md:grid-cols-4">
           {steps.map((s, i) => (
             <li key={s} className="rounded-2xl border border-border bg-background p-6">
@@ -262,13 +258,12 @@ function SolutionSection() {
 
 function FeaturesSection() {
   const feats = [
-    { t: "오늘 챙길 가족 일", d: "오늘 무엇을 챙길지 한눈에 봅니다." },
+    { t: "오늘의 할 일", d: "오늘 무엇을 챙길지 한눈에 봅니다." },
     { t: "가족 일정 정리", d: "흩어진 가족 일을 한곳에 모읍니다." },
-    { t: "AI가 정리한 할 일", d: "필요한 할 일을 자동으로 나눠줍니다." },
+    { t: "체크리스트", d: "필요한 할 일을 자동으로 나눠줍니다." },
     { t: "가능한 날짜 고르기", d: "가족이 가능한 날짜를 모아 확인합니다." },
-    { t: "맡을 일 나누기", d: "누가 무엇을 맡았는지 분명해집니다." },
-    { t: "가족 확인", d: "확인 상태를 한눈에 봅니다." },
-    { t: "부모님 간편 확인", d: "큰 글씨와 단순 버튼으로 부담 없이." },
+    { t: "담당 일 나누기", d: "누가 무엇을 맡았는지 분명해집니다." },
+    { t: "가족 확인/응답", d: "부모님과 가족이 '확인했어요', '이 날짜가 좋아요'처럼 한 번에 응답할 수 있습니다." },
   ];
   return (
     <section id="features" className="py-20 md:py-28">
@@ -298,7 +293,7 @@ function UseCasesSection() {
   return (
     <section className="bg-surface py-16 md:py-24">
       <div className="mx-auto w-full max-w-5xl px-5">
-        <h2 className="font-display text-3xl font-bold md:text-4xl">이런 가족 일부터 챙겨보세요.</h2>
+        <h2 className="font-display text-3xl font-bold md:text-4xl">이런 가족 일부터 체크해보세요.</h2>
         <ul className="mt-10 grid gap-4 md:grid-cols-2">
           {cases.map(({ icon: Icon, t, items }) => (
             <li key={t} className="rounded-2xl border border-border bg-background p-6">
@@ -361,14 +356,13 @@ function ParentSection() {
 function TrustSection() {
   const items = [
     "의료 판단이나 치료 조언을 제공하지 않습니다.",
-    "실제 병원 예약, 결제, 외부 서비스 연동은 초기 버전에서 제공하지 않습니다.",
     "가족에게 필요한 정보만 간단히 정리할 수 있도록 설계합니다.",
-    "부모님이 복잡한 정보를 직접 입력하지 않아도 사용할 수 있습니다.",
+    "부모님이 이해하기 쉽게 복잡한 정보를 직접 입력하지 않아도 사용할 수 있습니다.",
   ];
   return (
     <section className="bg-surface py-16">
       <div className="mx-auto w-full max-w-3xl px-5">
-        <h2 className="font-display text-3xl font-bold">가족 정보를 다루는 만큼, 필요한 만큼만.</h2>
+        <h2 className="font-display text-3xl font-bold">가족 정보를 다루는 만큼,<br />안전하고 신중하게</h2>
         <ul className="mt-6 space-y-3">
           {items.map((t) => (
             <li key={t} className="flex gap-3 rounded-xl bg-background p-4 text-sm">
@@ -399,7 +393,7 @@ function FAQSection() {
     <section id="faq" className="py-20 md:py-28">
 
       <div className="mx-auto w-full max-w-3xl px-5">
-        <h2 className="font-display text-3xl font-bold md:text-4xl">자주 묻는 질문</h2>
+        <h2 className="font-display text-3xl font-bold md:text-4xl">궁금하신 점,<br />먼저 답해드릴게요.</h2>
         <ul className="mt-8 divide-y divide-border rounded-2xl border border-border bg-surface">
           {faqs.map(([q, a], i) => (
             <li key={q}>
