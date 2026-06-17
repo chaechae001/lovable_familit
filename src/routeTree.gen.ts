@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as DemoRouteImport } from './routes/demo'
+import { Route as BetaRouteImport } from './routes/beta'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
@@ -31,6 +32,11 @@ const OnboardingRoute = OnboardingRouteImport.update({
 const DemoRoute = DemoRouteImport.update({
   id: '/demo',
   path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BetaRoute = BetaRouteImport.update({
+  id: '/beta',
+  path: '/beta',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppRoute = AppRouteImport.update({
@@ -92,6 +98,7 @@ const AppTasksIdDatesRoute = AppTasksIdDatesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/beta': typeof BetaRoute
   '/demo': typeof DemoRoute
   '/onboarding': typeof OnboardingRouteWithChildren
   '/app/family': typeof AppFamilyRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/beta': typeof BetaRoute
   '/demo': typeof DemoRoute
   '/onboarding': typeof OnboardingRouteWithChildren
   '/app/family': typeof AppFamilyRoute
@@ -122,6 +130,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/beta': typeof BetaRoute
   '/demo': typeof DemoRoute
   '/onboarding': typeof OnboardingRouteWithChildren
   '/app/family': typeof AppFamilyRoute
@@ -139,6 +148,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/beta'
     | '/demo'
     | '/onboarding'
     | '/app/family'
@@ -153,6 +163,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/beta'
     | '/demo'
     | '/onboarding'
     | '/app/family'
@@ -168,6 +179,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/app'
+    | '/beta'
     | '/demo'
     | '/onboarding'
     | '/app/family'
@@ -184,6 +196,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRouteWithChildren
+  BetaRoute: typeof BetaRoute
   DemoRoute: typeof DemoRoute
   OnboardingRoute: typeof OnboardingRouteWithChildren
   ParentShareTokenRoute: typeof ParentShareTokenRoute
@@ -203,6 +216,13 @@ declare module '@tanstack/react-router' {
       path: '/demo'
       fullPath: '/demo'
       preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beta': {
+      id: '/beta'
+      path: '/beta'
+      fullPath: '/beta'
+      preLoaderRoute: typeof BetaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app': {
@@ -332,6 +352,7 @@ const OnboardingRouteWithChildren = OnboardingRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
+  BetaRoute: BetaRoute,
   DemoRoute: DemoRoute,
   OnboardingRoute: OnboardingRouteWithChildren,
   ParentShareTokenRoute: ParentShareTokenRoute,
