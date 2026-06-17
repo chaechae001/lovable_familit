@@ -183,7 +183,8 @@ function ProblemSection() {
     "결국 챙기는 사람만 계속 챙기게 됩니다.",
   ];
   return (
-    <section className="bg-surface py-16 md:py-24">
+    <section id="problem" className="bg-surface py-20 md:py-28">
+
       <div className="mx-auto w-full max-w-4xl px-5">
         <h2 className="font-display text-3xl font-bold md:text-4xl">가족 일은 마음만으로 챙기기 어렵습니다.</h2>
         <p className="mt-4 text-muted-foreground">
@@ -242,7 +243,8 @@ function SolutionSection() {
     "완료 여부를 남깁니다.",
   ];
   return (
-    <section className="bg-surface py-16 md:py-24">
+    <section id="solution" className="bg-surface py-20 md:py-28">
+
       <div className="mx-auto w-full max-w-5xl px-5">
         <h2 className="font-display text-3xl font-bold md:text-4xl">FAMILIT은 가족이 함께 챙길 일을 한곳에 모아줍니다.</h2>
         <ol className="mt-10 grid gap-4 md:grid-cols-4">
@@ -269,7 +271,8 @@ function FeaturesSection() {
     { t: "부모님 간편 확인", d: "큰 글씨와 단순 버튼으로 부담 없이." },
   ];
   return (
-    <section className="py-16 md:py-24">
+    <section id="features" className="py-20 md:py-28">
+
       <div className="mx-auto w-full max-w-5xl px-5">
         <h2 className="font-display text-3xl font-bold md:text-4xl">가족을 챙기는 일을 더 쉽게.</h2>
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -393,7 +396,8 @@ function FAQSection() {
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="py-16 md:py-24">
+    <section id="faq" className="py-20 md:py-28">
+
       <div className="mx-auto w-full max-w-3xl px-5">
         <h2 className="font-display text-3xl font-bold md:text-4xl">자주 묻는 질문</h2>
         <ul className="mt-8 divide-y divide-border rounded-2xl border border-border bg-surface">
