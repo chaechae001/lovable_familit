@@ -293,10 +293,10 @@ function Problem() {
 
 function Compare() {
   const rows = [
-    { Icon: Calendar, name: "캘린더", desc: "날짜는 알려주지만, 무엇을 준비해야 하는지는 알려주지 않습니다." },
-    { Icon: MessageCircle, name: "가족 단톡방", desc: "대화는 빠르지만, 결정사항과 할 일이 쉽게 흘러갑니다." },
-    { Icon: Plane, name: "여행 앱", desc: "여행 코스는 잘 짜주지만, 가족 간 역할 분담과 부모님 확인에는 어울리지 않습니다." },
-    { Icon: ShoppingBag, name: "커머스 앱", desc: "선물은 살 수 있지만, 가족 의견과 과거 선물 기록까지 관리하기 어렵습니다." },
+    { Icon: Calendar, bg: "#E4F0FF", fg: "#2F6FE0", name: "캘린더", desc: "날짜는 알려주지만, 무엇을 준비해야 하는지는 알려주지 않습니다." },
+    { Icon: MessageCircle, bg: "#FFF1DC", fg: "#D97A1F", name: "가족 단톡방", desc: "대화는 빠르지만, 결정사항과 할 일이 쉽게 흘러갑니다." },
+    { Icon: Plane, bg: "#E1F5EC", fg: "#1F9D6B", name: "여행 앱", desc: "여행 코스는 잘 짜주지만, 가족 간 역할 분담과 부모님 확인에는 어울리지 않습니다." },
+    { Icon: ShoppingBag, bg: "#FFE4EC", fg: "#E0457B", name: "커머스 앱", desc: "선물은 살 수 있지만, 가족 의견과 과거 선물 기록까지 관리하기 어렵습니다." },
   ];
   return (
     <Section id="compare" className="bg-surface">
@@ -314,10 +314,13 @@ function Compare() {
 
       <div className="mt-10 grid gap-4 lg:grid-cols-5">
         <div className="grid gap-3 sm:grid-cols-2 lg:col-span-3">
-          {rows.map(({ Icon, name, desc }) => (
+          {rows.map(({ Icon, name, desc, bg, fg }) => (
             <div key={name} className="rounded-2xl border border-border bg-card p-5">
               <div className="flex items-center gap-2">
-                <span className="grid h-9 w-9 place-items-center rounded-lg bg-muted text-muted-foreground">
+                <span
+                  className="grid h-9 w-9 place-items-center rounded-lg"
+                  style={{ backgroundColor: bg, color: fg }}
+                >
                   <Icon className="h-4.5 w-4.5" />
                 </span>
                 <div>
