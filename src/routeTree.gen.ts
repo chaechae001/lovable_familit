@@ -9,39 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as DemoRouteImport } from './routes/demo'
-import { Route as BetaRouteImport } from './routes/beta'
-import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AppIndexRouteImport } from './routes/app.index'
-import { Route as ParentShareTokenRouteImport } from './routes/parent.$shareToken'
-import { Route as OnboardingFamilyRouteImport } from './routes/onboarding.family'
-import { Route as AppSettingsRouteImport } from './routes/app.settings'
-import { Route as AppHistoryRouteImport } from './routes/app.history'
-import { Route as AppFamilyRouteImport } from './routes/app.family'
-import { Route as AppTasksNewRouteImport } from './routes/app.tasks.new'
-import { Route as AppTasksIdRouteImport } from './routes/app.tasks.$id'
-import { Route as AppTasksIdDatesRouteImport } from './routes/app.tasks.$id.dates'
 
-const OnboardingRoute = OnboardingRouteImport.update({
-  id: '/onboarding',
-  path: '/onboarding',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DemoRoute = DemoRouteImport.update({
   id: '/demo',
   path: '/demo',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BetaRoute = BetaRouteImport.update({
-  id: '/beta',
-  path: '/beta',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AppRoute = AppRouteImport.update({
-  id: '/app',
-  path: '/app',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -49,187 +22,40 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppIndexRoute = AppIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AppRoute,
-} as any)
-const ParentShareTokenRoute = ParentShareTokenRouteImport.update({
-  id: '/parent/$shareToken',
-  path: '/parent/$shareToken',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OnboardingFamilyRoute = OnboardingFamilyRouteImport.update({
-  id: '/family',
-  path: '/family',
-  getParentRoute: () => OnboardingRoute,
-} as any)
-const AppSettingsRoute = AppSettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppHistoryRoute = AppHistoryRouteImport.update({
-  id: '/history',
-  path: '/history',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppFamilyRoute = AppFamilyRouteImport.update({
-  id: '/family',
-  path: '/family',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppTasksNewRoute = AppTasksNewRouteImport.update({
-  id: '/tasks/new',
-  path: '/tasks/new',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppTasksIdRoute = AppTasksIdRouteImport.update({
-  id: '/tasks/$id',
-  path: '/tasks/$id',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppTasksIdDatesRoute = AppTasksIdDatesRouteImport.update({
-  id: '/dates',
-  path: '/dates',
-  getParentRoute: () => AppTasksIdRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/app': typeof AppRouteWithChildren
-  '/beta': typeof BetaRoute
   '/demo': typeof DemoRoute
-  '/onboarding': typeof OnboardingRouteWithChildren
-  '/app/family': typeof AppFamilyRoute
-  '/app/history': typeof AppHistoryRoute
-  '/app/settings': typeof AppSettingsRoute
-  '/onboarding/family': typeof OnboardingFamilyRoute
-  '/parent/$shareToken': typeof ParentShareTokenRoute
-  '/app/': typeof AppIndexRoute
-  '/app/tasks/$id': typeof AppTasksIdRouteWithChildren
-  '/app/tasks/new': typeof AppTasksNewRoute
-  '/app/tasks/$id/dates': typeof AppTasksIdDatesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/beta': typeof BetaRoute
   '/demo': typeof DemoRoute
-  '/onboarding': typeof OnboardingRouteWithChildren
-  '/app/family': typeof AppFamilyRoute
-  '/app/history': typeof AppHistoryRoute
-  '/app/settings': typeof AppSettingsRoute
-  '/onboarding/family': typeof OnboardingFamilyRoute
-  '/parent/$shareToken': typeof ParentShareTokenRoute
-  '/app': typeof AppIndexRoute
-  '/app/tasks/$id': typeof AppTasksIdRouteWithChildren
-  '/app/tasks/new': typeof AppTasksNewRoute
-  '/app/tasks/$id/dates': typeof AppTasksIdDatesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/app': typeof AppRouteWithChildren
-  '/beta': typeof BetaRoute
   '/demo': typeof DemoRoute
-  '/onboarding': typeof OnboardingRouteWithChildren
-  '/app/family': typeof AppFamilyRoute
-  '/app/history': typeof AppHistoryRoute
-  '/app/settings': typeof AppSettingsRoute
-  '/onboarding/family': typeof OnboardingFamilyRoute
-  '/parent/$shareToken': typeof ParentShareTokenRoute
-  '/app/': typeof AppIndexRoute
-  '/app/tasks/$id': typeof AppTasksIdRouteWithChildren
-  '/app/tasks/new': typeof AppTasksNewRoute
-  '/app/tasks/$id/dates': typeof AppTasksIdDatesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/app'
-    | '/beta'
-    | '/demo'
-    | '/onboarding'
-    | '/app/family'
-    | '/app/history'
-    | '/app/settings'
-    | '/onboarding/family'
-    | '/parent/$shareToken'
-    | '/app/'
-    | '/app/tasks/$id'
-    | '/app/tasks/new'
-    | '/app/tasks/$id/dates'
+  fullPaths: '/' | '/demo'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/beta'
-    | '/demo'
-    | '/onboarding'
-    | '/app/family'
-    | '/app/history'
-    | '/app/settings'
-    | '/onboarding/family'
-    | '/parent/$shareToken'
-    | '/app'
-    | '/app/tasks/$id'
-    | '/app/tasks/new'
-    | '/app/tasks/$id/dates'
-  id:
-    | '__root__'
-    | '/'
-    | '/app'
-    | '/beta'
-    | '/demo'
-    | '/onboarding'
-    | '/app/family'
-    | '/app/history'
-    | '/app/settings'
-    | '/onboarding/family'
-    | '/parent/$shareToken'
-    | '/app/'
-    | '/app/tasks/$id'
-    | '/app/tasks/new'
-    | '/app/tasks/$id/dates'
+  to: '/' | '/demo'
+  id: '__root__' | '/' | '/demo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AppRoute: typeof AppRouteWithChildren
-  BetaRoute: typeof BetaRoute
   DemoRoute: typeof DemoRoute
-  OnboardingRoute: typeof OnboardingRouteWithChildren
-  ParentShareTokenRoute: typeof ParentShareTokenRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/onboarding': {
-      id: '/onboarding'
-      path: '/onboarding'
-      fullPath: '/onboarding'
-      preLoaderRoute: typeof OnboardingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/demo': {
       id: '/demo'
       path: '/demo'
       fullPath: '/demo'
       preLoaderRoute: typeof DemoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/beta': {
-      id: '/beta'
-      path: '/beta'
-      fullPath: '/beta'
-      preLoaderRoute: typeof BetaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/app': {
-      id: '/app'
-      path: '/app'
-      fullPath: '/app'
-      preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -239,123 +65,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/app/': {
-      id: '/app/'
-      path: '/'
-      fullPath: '/app/'
-      preLoaderRoute: typeof AppIndexRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/parent/$shareToken': {
-      id: '/parent/$shareToken'
-      path: '/parent/$shareToken'
-      fullPath: '/parent/$shareToken'
-      preLoaderRoute: typeof ParentShareTokenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/onboarding/family': {
-      id: '/onboarding/family'
-      path: '/family'
-      fullPath: '/onboarding/family'
-      preLoaderRoute: typeof OnboardingFamilyRouteImport
-      parentRoute: typeof OnboardingRoute
-    }
-    '/app/settings': {
-      id: '/app/settings'
-      path: '/settings'
-      fullPath: '/app/settings'
-      preLoaderRoute: typeof AppSettingsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/history': {
-      id: '/app/history'
-      path: '/history'
-      fullPath: '/app/history'
-      preLoaderRoute: typeof AppHistoryRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/family': {
-      id: '/app/family'
-      path: '/family'
-      fullPath: '/app/family'
-      preLoaderRoute: typeof AppFamilyRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/tasks/new': {
-      id: '/app/tasks/new'
-      path: '/tasks/new'
-      fullPath: '/app/tasks/new'
-      preLoaderRoute: typeof AppTasksNewRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/tasks/$id': {
-      id: '/app/tasks/$id'
-      path: '/tasks/$id'
-      fullPath: '/app/tasks/$id'
-      preLoaderRoute: typeof AppTasksIdRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/tasks/$id/dates': {
-      id: '/app/tasks/$id/dates'
-      path: '/dates'
-      fullPath: '/app/tasks/$id/dates'
-      preLoaderRoute: typeof AppTasksIdDatesRouteImport
-      parentRoute: typeof AppTasksIdRoute
-    }
   }
 }
 
-interface AppTasksIdRouteChildren {
-  AppTasksIdDatesRoute: typeof AppTasksIdDatesRoute
-}
-
-const AppTasksIdRouteChildren: AppTasksIdRouteChildren = {
-  AppTasksIdDatesRoute: AppTasksIdDatesRoute,
-}
-
-const AppTasksIdRouteWithChildren = AppTasksIdRoute._addFileChildren(
-  AppTasksIdRouteChildren,
-)
-
-interface AppRouteChildren {
-  AppFamilyRoute: typeof AppFamilyRoute
-  AppHistoryRoute: typeof AppHistoryRoute
-  AppSettingsRoute: typeof AppSettingsRoute
-  AppIndexRoute: typeof AppIndexRoute
-  AppTasksIdRoute: typeof AppTasksIdRouteWithChildren
-  AppTasksNewRoute: typeof AppTasksNewRoute
-}
-
-const AppRouteChildren: AppRouteChildren = {
-  AppFamilyRoute: AppFamilyRoute,
-  AppHistoryRoute: AppHistoryRoute,
-  AppSettingsRoute: AppSettingsRoute,
-  AppIndexRoute: AppIndexRoute,
-  AppTasksIdRoute: AppTasksIdRouteWithChildren,
-  AppTasksNewRoute: AppTasksNewRoute,
-}
-
-const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
-
-interface OnboardingRouteChildren {
-  OnboardingFamilyRoute: typeof OnboardingFamilyRoute
-}
-
-const OnboardingRouteChildren: OnboardingRouteChildren = {
-  OnboardingFamilyRoute: OnboardingFamilyRoute,
-}
-
-const OnboardingRouteWithChildren = OnboardingRoute._addFileChildren(
-  OnboardingRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AppRoute: AppRouteWithChildren,
-  BetaRoute: BetaRoute,
   DemoRoute: DemoRoute,
-  OnboardingRoute: OnboardingRouteWithChildren,
-  ParentShareTokenRoute: ParentShareTokenRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

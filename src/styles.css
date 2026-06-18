@@ -97,8 +97,6 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "ss01", "cv11";
-    word-break: keep-all;
-    overflow-wrap: break-word;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
