@@ -98,13 +98,6 @@ function AppMockup() {
   return (
     <div className="relative mx-auto w-full max-w-[340px]">
       <div className="relative rounded-[2.2rem] border border-border bg-foreground/90 p-2 shadow-[0_30px_80px_-30px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
-        {/* floating chips — kept inside the phone frame so they never overflow */}
-        <div className="pointer-events-none absolute left-3 top-16 z-10 rounded-2xl bg-surface-elevated px-2.5 py-1.5 text-[10.5px] font-medium shadow-[var(--shadow-card)] sm:text-[11.5px]">
-          <span className="mr-1">✅</span> 아빠가 확인했어요
-        </div>
-        <div className="pointer-events-none absolute right-3 top-44 z-10 rounded-2xl bg-surface-elevated px-2.5 py-1.5 text-[10.5px] font-medium shadow-[var(--shadow-card)] sm:text-[11.5px]">
-          <span className="mr-1">🎁</span> 선물 후보 3개
-        </div>
 
         <div className="overflow-hidden rounded-[1.8rem] bg-background">
           {/* status bar */}
