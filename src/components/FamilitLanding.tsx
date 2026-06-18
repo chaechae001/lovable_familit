@@ -247,11 +247,11 @@ function Hero() {
 
 function Problem() {
   const items = [
-    { Icon: Cake, t: "바쁜 일상 속에서 부모님 생신을 급하게 준비하는 경우가 생깁니다." },
-    { Icon: CalendarClock, t: "가족 모임 날짜를 정하는 데 오래 걸립니다." },
-    { Icon: Stethoscope, t: "건강검진 일정을 놓치면 더 마음이 쓰입니다." },
-    { Icon: MessageCircle, t: "가족 단톡방에서 얘기를 해도 기억하기 어렵습니다." },
-    { Icon: Calendar, t: "캘린더에 적어도 실제 행동으로 이어지기 힘듭니다." },
+    { Icon: Cake, bg: "#FFE4EC", fg: "#E0457B", t: "바쁜 일상 속에서 부모님 생신을 급하게 준비하는 경우가 생깁니다." },
+    { Icon: CalendarClock, bg: "#E4F0FF", fg: "#2F6FE0", t: "가족 모임 날짜를 정하는 데 오래 걸립니다." },
+    { Icon: Stethoscope, bg: "#E1F5EC", fg: "#1F9D6B", t: "건강검진 일정을 놓치면 더 마음이 쓰입니다." },
+    { Icon: MessageCircle, bg: "#FFF1DC", fg: "#D97A1F", t: "가족 단톡방에서 얘기를 해도 기억하기 어렵습니다." },
+    { Icon: Calendar, bg: "#EFE7FB", fg: "#7A4DD1", t: "캘린더에 적어도 실제 행동으로 이어지기 힘듭니다." },
   ];
   return (
     <Section id="problem">
@@ -272,12 +272,15 @@ function Problem() {
         </p>
       </div>
       <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map(({ Icon, t }, idx) => (
+        {items.map(({ Icon, t, bg, fg }, idx) => (
           <div
             key={idx}
             className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)]"
           >
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary">
+            <span
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-xl"
+              style={{ backgroundColor: bg, color: fg }}
+            >
               <Icon className="h-5 w-5" />
             </span>
             <p className="text-[14.5px] leading-relaxed break-keep">{t}</p>
