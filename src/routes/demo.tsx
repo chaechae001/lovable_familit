@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import FamilitDemo from "@/components/FamilitDemo";
+import { FamilitLogo } from "@/components/FamilitLogo";
 
 export const Route = createFileRoute("/demo")({
   head: () => ({
@@ -26,9 +27,7 @@ function DemoPage() {
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md">
         <div className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-5">
           <Link to="/" className="flex items-center gap-2">
-            <span className="grid h-7 w-7 place-items-center rounded-lg bg-primary text-primary-foreground font-display text-sm font-bold">
-              F
-            </span>
+            <FamilitLogo size={28} />
             <span className="font-display text-base font-bold tracking-tight">
               Familit · 미리보기
             </span>

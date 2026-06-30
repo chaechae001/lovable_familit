@@ -70,10 +70,10 @@ function Nav() {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5">
         <a href="#top" className="flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary text-primary-foreground font-display text-base font-bold">
-            F
+          <FamilitLogo size={32} />
+          <span className="font-display text-lg font-bold tracking-tight">
+            Familit<span className="ml-1 text-[12px] font-semibold text-muted-foreground">패밀릿</span>
           </span>
-          <span className="font-display text-lg font-bold tracking-tight">Familit</span>
         </a>
         <nav className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
           <a href="#problem" className="hover:text-foreground">문제</a>
@@ -889,10 +889,10 @@ function Footer() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <div className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary font-display text-base font-bold text-primary-foreground">
-              F
+            <FamilitLogo size={32} />
+            <span className="font-display text-lg font-bold">
+              Familit<span className="ml-1 text-[12px] font-semibold text-muted-foreground">패밀릿</span>
             </span>
-            <span className="font-display text-lg font-bold">Familit</span>
           </div>
           <p className="mt-3 max-w-sm text-[13.5px] text-muted-foreground break-keep">
             가족이 함께 챙겨야 할 일을 카드로 정리하고, 함께 확인하며 완료하게 돕는 가족 케어 운영 앱.
