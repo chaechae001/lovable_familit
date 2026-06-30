@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Lock,
 } from "lucide-react";
+import { FamilitLogo } from "@/components/FamilitLogo";
 
 /* ---------- Shared atoms ---------- */
 
